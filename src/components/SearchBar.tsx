@@ -1,15 +1,45 @@
-import React from "react";
+import React, { useState, FC } from "react";
 
-export const SearchBar = () => {
+// export type Word = {
+//   word: string;
+//   setWord: React.Dispatch<React.SetStateAction<string>>;
+// };
+
+type Props = {
+  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+  inputWord: string;
+  setInputWord: React.Dispatch<React.SetStateAction<string>>;
+};
+
+export const SearchBar: FC<Props> = ({ onSubmit, inputWord, setInputWord }) => {
+  //   const [word, setWord] = useState("");
+
+  const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    // defaultで用意されている動作をやめる
+    e.preventDefault();
+    // console.log(searchWord);
+    onSubmit(e);
+  };
+
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputWord(e.target.value);
+  };
+
   return (
-    <form className="ui form">
+    <form onSubmit={onFormSubmit} className="ui form">
       <div className="field">
-        <label>First Name</label>
-        <input type="text" name="first-name" placeholder="First Name" />
+        <label>Image Search</label>
+        <input
+          type="text"
+          name="search"
+          placeholder=""
+          value={inputWord}
+          onChange={handleInput}
+        />
       </div>
 
       <button className="ui button" type="submit">
-        Submit
+        search
       </button>
     </form>
   );
