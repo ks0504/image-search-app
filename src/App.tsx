@@ -1,54 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import * as style from "./styles/styles.module.css";
 import { SearchBar } from "./components/SearchBar";
 import { ImageList } from "./components/ImageList";
 import logo from "./logo.png";
-
-// type Hits = {
-//   id: number;
-//   pageURL: string;
-//   tags: string;
-//   webformatURL: string;
-// };
-
-// type State = {
-//   inputWord: string;
-//   setInputWord: React.Dispatch<React.SetStateAction<string>>;
-//   searchWord: string;
-//   setSearchWord: React.Dispatch<React.SetStateAction<string>>;
-//   // any型をやめたい
-//   images: any[];
-//   setImages: React.Dispatch<React.SetStateAction<string>>;
-// };
-
-type Params = {
-  key: string | undefined;
-  q: string;
-};
-
-type Response = {
-  hits: [];
-  total: number;
-  totalHits: number;
-};
+import { Params, Hits, Response } from "./model/images";
 
 const App: React.FC = () => {
   const [inputWord, setInputWord] = useState("");
   const [searchWord, setSearchWord] = useState("");
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState<Hits[]>([]);
 
   const APIKEY = process.env.REACT_APP_PIXABAY_APIKEY;
 
   const onSearch = async (event: React.FormEvent<HTMLFormElement>) => {
-    console.log("inputWord : " + inputWord);
-    //TODO: searchWordに上手くセットされない
+    // console.log("inputWord : " + inputWord);
     setSearchWord(inputWord);
-    console.log("searchWord : " + searchWord);
+    // console.log("searchWord : " + searchWord);
     try {
       const params: Params = {
         key: APIKEY,
-        //TODO: q: searchWordにしたい
         q: inputWord,
       };
 

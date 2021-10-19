@@ -1,15 +1,8 @@
 import React, { FC } from "react";
+import { Hits } from "../model/images";
 
-// type Hits = {
-//   id: number;
-//   pageURL: string;
-//   tags: string;
-//   webformatURL: string;
-// };
-
-export type Props = {
-  //TODO: any型をやめる
-  images: any[];
+type Props = {
+  images: Hits[];
 };
 
 export const ImageList: FC<Props> = ({ images }) => {

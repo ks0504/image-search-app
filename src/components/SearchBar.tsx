@@ -1,9 +1,4 @@
-import React, { useState, FC } from "react";
-
-// export type Word = {
-//   word: string;
-//   setWord: React.Dispatch<React.SetStateAction<string>>;
-// };
+import React, { FC } from "react";
 
 type Props = {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
@@ -12,12 +7,9 @@ type Props = {
 };
 
 export const SearchBar: FC<Props> = ({ onSubmit, inputWord, setInputWord }) => {
-  //   const [word, setWord] = useState("");
-
   const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     // defaultで用意されている動作をやめる
     e.preventDefault();
-    // console.log(searchWord);
     onSubmit(e);
   };
 
