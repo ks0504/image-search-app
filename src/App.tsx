@@ -12,6 +12,7 @@ const App: React.FC = () => {
   const [images, setImages] = useState<Hits[]>([]);
 
   const APIKEY = process.env.REACT_APP_PIXABAY_APIKEY;
+  const maxImageNumber: number = 100;
 
   const onSearch = async (event: React.FormEvent<HTMLFormElement>) => {
     // console.log("inputWord : " + inputWord);
@@ -21,6 +22,7 @@ const App: React.FC = () => {
       const params: Params = {
         key: APIKEY,
         q: inputWord,
+        per_page: maxImageNumber,
       };
 
       const res = await axios.get<Response>("https://pixabay.com/api/", {

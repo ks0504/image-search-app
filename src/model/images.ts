@@ -1,6 +1,7 @@
 type Params = {
   key: string | undefined;
   q: string;
+  per_page: number;
 };
 
 type Hits = {

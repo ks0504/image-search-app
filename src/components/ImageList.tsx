@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import { Hits } from "../model/images";
+import * as styles from "../styles/styles.module.css";
 
 type Props = {
   images: Hits[];
@@ -13,9 +14,12 @@ export const ImageList: FC<Props> = ({ images }) => {
         key={image.id}
         target="_blank"
         rel="noopener noreferrer"
-        className="image"
       >
-        <img src={image.webformatURL} alt={image.tags} />
+        <img
+          className={styles.images_size}
+          src={image.webformatURL}
+          alt={image.tags}
+        />
       </a>
     );
   });
