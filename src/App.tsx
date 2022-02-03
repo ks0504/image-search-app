@@ -15,9 +15,7 @@ const App: React.FC = () => {
   const maxImageNumber: number = 100;
 
   const onSearch = async (event: React.FormEvent<HTMLFormElement>) => {
-    // console.log("inputWord : " + inputWord);
     setSearchWord(inputWord);
-    // console.log("searchWord : " + searchWord);
     try {
       const params: Params = {
         key: APIKEY,
@@ -37,21 +35,6 @@ const App: React.FC = () => {
       alert("画像の取得に失敗しました。");
     }
   };
-
-  // await axios
-  //   .get<Response>(`https://pixabay.com/api/?key=${APIKEY}&q=${inputWord}`)
-  //   .then((results) => {
-  //     console.log(results.data.hits);
-  //     setImages(results.data.hits);
-  //     if (results.data.total === 0) {
-  //       alert("画像はありません。");
-  //     }
-  //   })
-  //   .catch((error) => {
-  //     alert("画像の取得に失敗しました。");
-  //     console.log(error.status);
-  //   });
-  // };
 
   return (
     <div className={style.style}>
